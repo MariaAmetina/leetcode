@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <script defer src="script.js"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- <div class="style problem">
+        <div class="style description">
+          <h1><span class="difficulty">()</span></h1>
+          <p><br /><br /></p>
+        </div>
+        <div class="style solution" id="solution1">
+          <pre></pre>
+        </div>
+      </div> -->
+    <div class="style problem">
+      <div class="style description">
+        <h1>
+          1958. Check if Move is Legal <span class="difficulty">(MEDIUM)</span>
+        </h1>
+        <p>
+          You are given a 0-indexed 8 x 8 grid board, where board[r][c]
+          represents the cell (r, c) on a game board. On the board, free cells
+          are represented by '.', white cells are represented by 'W', and black
+          cells are represented by 'B'.<br /><br />
+          Each move in this game consists of choosing a free cell and changing
+          it to the color you are playing as (either white or black). However, a
+          move is only legal if, after changing it, the cell becomes the
+          endpoint of a good line (horizontal, vertical, or diagonal).
+          <br /><br />
+          A good line is a line of three or more cells (including the endpoints)
+          where the endpoints of the line are one color, and the remaining cells
+          in the middle are the opposite color (no cells in the line are free).
+          <br /><br />
+          Given two integers rMove and cMove and a character color representing
+          the color you are playing as (white or black), return true if changing
+          cell (rMove, cMove) to color color is a legal move, or false if it is
+          not legal.
+        </p>
+      </div>
+      <div class="style solution" id="solution1">
+        <pre>
+        function lineCheck(board, rl, cl, rMove, cMove, color, d) {
+            let row = rMove + d[0],
+              col = cMove + d[1],
+              length = 1;
+          
+            while (row >= 0 && col >= 0 && row < rl && col < cl) {
+              length++;
+          
+              if (board[row][col] === ".") return false;
+              else if (board[row][col] === color) return length >= 3;
+          
+              (row += d[0]), (col += d[1]);
+            }
+            return false;
+        }
+          
+        const checkMove = function (board, rMove, cMove, color) {
+            let rl = board.length;
+            let cl = board[0].length;
+            let directions = [
+              [-1, 0],
+              [1, 0],
+              [0, 1],
+              [0, -1],
+              [-1, -1],
+              [1, 1],
+              [-1, 1],
+              [1, -1],
+            ];
+            for (let d of directions)
+              if (lineCheck(board, rl, cl, rMove, cMove, color, d)) return true;
+          
+            return false;
+        };
+
+        checkMove([
+                    [".", ".", ".", "B", ".", ".", ".", "."],
+                    [".", ".", ".", "W", ".", ".", ".", "."],
+                    [".", ".", ".", "W", ".", ".", ".", "."],
+                    [".", ".", ".", "W", ".", ".", ".", "."],
+                    ["W", "B", "B", ".", "W", "W", "W", "B"],
+                    [".", ".", ".", "B", ".", ".", ".", "."],
+                    [".", ".", ".", "B", ".", ".", ".", "."],
+                    [".", ".", ".", "W", ".", ".", ".", "."],
+        ], 4, 3, "B") // true
+      </pre
+        >
+      </div>
+    </div>
+
+    <div class="style problem">
+      <div class="style description">
+        <h1>
+          1957. Delete Characters to Make Fancy String
+          <span class="difficulty">(EASY)</span>
+        </h1>
+        <p>
+          A fancy string is a string where no three consecutive characters are
+          equal.<br />
+
+          Given a string s, delete the minimum possible number of characters
+          from s to make it fancy.<br />
+
+          Return the final string after the deletion. It can be shown that the
+          answer will always be unique.<br />
+        </p>
+      </div>
+      <div class="style solution" id="solution1">
+        <pre>
+        const makeFancyString = function (s) {
+            s = s.split("");
+          
+            for (let i = 0; i < s.length; i++) {
+              if (s[i] === s[i + 1] && s[i + 1] === s[i + 2]) {
+                s[i] = "";
+              }
+            }
+            return s.join("");
+        };
+        makeFancyString("leeetcode") //leetcode
+        </pre>
+      </div>
+    </div>
+  </body>
+</html>
