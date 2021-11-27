@@ -128,5 +128,71 @@
         </pre>
       </div>
     </div>
+
+    <div class="style problem">
+      <div class="style description">
+        <h1>1952. Three Divisors <span class="difficulty">(EASY)</span></h1>
+        <p>
+          Given an integer n, return true if n has exactly three positive
+          divisors. Otherwise, return false. <br />
+
+          An integer m is a divisor of n if there exists an integer k such that
+          n = k * m.
+        </p>
+      </div>
+      <div class="style solution" id="solution1">
+        <pre>
+        const isThree = function (n) {
+            const devisors = [];
+          
+            for (let i = 1; i <= n; i++) {
+              if (n % i == 0) {
+                devisors.push(i);
+              }
+            }
+          
+            return devisors.length === 3 ? true : false;
+        };
+          
+        isThree(9) //true</pre
+        >
+      </div>
+    </div>
+
+    <div class="style problem">
+      <div class="style description">
+        <h1>1. Two Sum <span class="difficulty">(EASY)</span></h1>
+        <p>
+          Given an array of integers nums and an integer target, return indices
+          of the two numbers such that they add up to target.<br />
+
+          You may assume that each input would have exactly one solution, and
+          you may not use the same element twice.<br />
+
+          You can return the answer in any order.
+        </p>
+      </div>
+      <div class="style solution" id="solution1">
+        <pre>
+            const twoSum = (nums, target) => {
+                const map = {};
+              
+                for (let i = 0; i < nums.length; i++) {
+                  const prev = target - nums[i];
+              
+                  if (prev in map) {
+                    return [map[another], i];
+                  }
+              
+                  map[nums[i]] = i;
+                }
+              
+                return null;
+              };
+              
+              twoSum([2, 7, 11, 15], 9); //[0, 1]
+        </pre>
+      </div>
+    </div>
   </body>
 </html>

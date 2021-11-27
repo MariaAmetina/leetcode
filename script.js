@@ -67,3 +67,47 @@ const makeFancyString = function (s) {
 };
 
 console.log(makeFancyString("leeetcode"));
+
+///////////////////////////////////////////////////////////////////////////
+const isThree = function (n) {
+  const devisors = [];
+
+  for (let i = 1; i <= n; i++) {
+    if (n % i == 0) {
+      devisors.push(i);
+    }
+  }
+
+  return devisors.length === 3 ? true : false;
+};
+
+console.log(isThree(9)); //true
+
+///////////////////////////////////////////////////////////////////////////
+// const twoSum = function (nums, target) {
+//   for (let i = 0; i < nums.length; i++) {
+//     for (let k = 1; k < nums.length - i; k++) {
+//       if (nums[i] + nums[i + k] === target) {
+//         return [i, i + k];
+//       }
+//     }
+//   }
+// };
+
+const twoSum = (nums, target) => {
+  const map = {};
+
+  for (let i = 0; i < nums.length; i++) {
+    const prev = target - nums[i];
+
+    if (prev in map) {
+      return [map[another], i];
+    }
+
+    map[nums[i]] = i;
+  }
+
+  return null;
+};
+
+console.log(twoSum([2, 7, 11, 15], 9));
